@@ -3,7 +3,7 @@ import s from './FeedbackOptions.module.css';
 
 function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
-    <div className={s.options}>
+    <div>
       {options.map(option => (
         <button
           className={s.button}
