@@ -18,7 +18,8 @@ class App extends React.Component {
   };
 
   countTotalFeedback() {
-    return this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
   }
 
   countPositiveFeedbackPercentage = () => {
@@ -29,6 +30,8 @@ class App extends React.Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+    const totalFeedback = this.countTotalFeedback();
+    const positiveFeedback = this.countPositiveFeedbackPercentage();
 
     return (
       <Container>
@@ -40,13 +43,13 @@ class App extends React.Component {
         </Section>
 
         <Section title="Statistics">
-          {this.countTotalFeedback() ? (
+          {totalFeedback ? (
             <Statistics
               good={good}
               neutral={neutral}
               bad={bad}
-              total={this.countTotalFeedback()}
-              positivePercentage={this.countPositiveFeedbackPercentage()}
+              total={totalFeedback}
+              positivePercentage={positiveFeedback}
             />
           ) : (
             <Notification message="No feedback was given." />
